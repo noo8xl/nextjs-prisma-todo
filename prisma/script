@@ -1,0 +1,4 @@
+-> npx prisma generate
+-> npx prisma db pull <your-db-name>
+
+-> enjoy it 

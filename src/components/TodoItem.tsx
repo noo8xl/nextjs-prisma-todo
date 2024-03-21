@@ -2,16 +2,27 @@
 
 type TodoItemProps = {
 	title: string
-	id: string
-	complete: boolean,
-	toggleTodo: (id: string, complete: boolean) => void
+	id: number
+	complete: boolean
+	toggleTodo: (id: number, complete: boolean) => void
 }
 
-const TodoItem = ({ title, id, complete, toggleTodo }: TodoItemProps) => {
+const TodoItem = (dto: TodoItemProps) => {
 	return <>
 		<li className="flex gap-1 items-center">
-			<input onChange={e => toggleTodo(id, e.target.checked)} id={id} type='checkbox' defaultChecked={complete} className="cursor-pointer peer" />
-			<label className="peer:checked:line-through cursor-pointer peer:checked:color-slate-500" htmlFor={id}>{title}</label>
+			<input 
+				onChange={e => dto.toggleTodo(dto.id, e.target.checked)} 
+				id={dto.id.toString()} 
+				type='checkbox' 
+				defaultChecked={dto.complete} 
+				className="cursor-pointer peer" 
+			/>
+			<label 
+				className="peer:checked:line-through cursor-pointer peer:checked:color-slate-500" 
+				htmlFor={dto.id.toString()}
+			>
+				{dto.title}
+			</label>
 		</li>
 	</>
 }
