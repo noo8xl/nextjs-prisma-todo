@@ -41,19 +41,24 @@ const Home = async () => {
 					Create New
 				</Link>
 			</header>
-			<ul className="pl-4">
-				{
-					list.map(todo => (
-						<TodoItem 
-							toggleTodo={toggleTodo} 
-							id={todo.id} 
-							complete={todo.complete} 
-							key={todo.id} 
-							title={todo.title} 
-						/>
-					))
-				}
-			</ul>
+			{
+				!list.length
+					? <></>
+					:
+					<ul className="pl-4">
+						{
+							list.map(todo => (
+								<TodoItem 
+									toggleTodo={toggleTodo} 
+									id={todo.id} 
+									complete={todo.complete} 
+									key={todo.id} 
+									title={todo.title} 
+								/>
+							))
+						}
+					</ul>
+			}
 		</>
 	)
 }
